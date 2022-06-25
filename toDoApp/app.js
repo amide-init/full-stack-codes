@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
+const cors = require('cors');
 const app = express();
 const port = 8080;
-const taskRoute =  require('./routes/task-routes');
+const taskRoutes =  require('./routes/task-routes');
+const userRoutes =  require('./routes/user-routes');
 
 // create application/json parser
 const jsonParser = bodyParser.json()
@@ -17,14 +19,13 @@ mongoose.connect("mongodb+srv://root:root@aarzoocluster.6pwhj.mongodb.net/todo",
             console.log("Db connected")
         }
     });
+app.use(cors());
 app.use(jsonParser);
-app.use('/task', taskRoute);
+app.use('/task', taskRoutes);
+app.use('/user', userRoutes)
 
 app.listen(port, () => {
     console.log("server is connected :", port);
 });
 
-//task1 : (tittle  : "Office Work")
-        //(description: "Working on weather applicaton")
-        //(date: 166687888 : )
 
