@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../models/user');
 const bcrpyt = require('bcrypt');
 const JWT  = require('jsonwebtoken');
-
+const checkAuth = require('../middleware/check-auth');
 
 //save data
 router.post('/signup', (req, res) => {
@@ -56,8 +56,16 @@ router.post('/login', (req, res) => {
 
 
 //fetch User details
-router.get('/', (req, res) => {
-    res.json("hello user")
+router.get('/',  checkAuth,  (req, res) => {
+    const id = req.userData.userId
+    User.findOne({_id: id})
+        .exec()
+        .then((result) => {
+            res.json({success: true, data: result})
+        })
+        .catch((err) => {
+            res.json({success: false, messsage: "Server error"})
+        })
 })
 
 
