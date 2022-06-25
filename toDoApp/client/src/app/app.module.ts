@@ -9,7 +9,9 @@ import { MainComponent } from './pages/main/main.component';
 import { CreateComponent } from './pages/create/create.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms'
     FooterComponent,
     MainComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
