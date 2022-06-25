@@ -1,0 +1,72 @@
+<div class="container mt-3 p-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-warning">
+                    <div class="row">
+                        <div class="col-8">
+                            <h3>{{isEdited ?  'Edit Product' : 'Add New Product'}}</h3>
+                        </div>
+                        <div class="col-4" *ngIf="isEdited">
+                            <img [src]="editedImgSrc" style="height:100px; width:100px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p [ngClass]="messageClass">{{message}}</p>
+                    <form [formGroup]="productForm">
+                        <div class="form-group">
+                            <label>Title</label>
+                            <input class="form-control" formControlName="title" placeholder="Write title here" >
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" formControlName="description" placeholder="Write description here" >
+
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Image Url</label>
+                            <input class="form-control" formControlName="thumbnail" placeholder="Add Image Url" >
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input class="form-control" type="number" formControlName="price" placeholder="Add product Price" >
+                        </div>
+                        <p class="text-right p-3">
+                            <button class="btn btn-warning" (click)="productAction()">{{isEdited ? 'Update Product' : 'Add Product'}}</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h3>Listed Products</h3>
+    <hr>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of products;index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{p._id}}</td>
+            <td>{{p.title}}</td>
+            <td>Rs. {{p.price}}</td>
+            <td>
+                <button class="btn btn-sm btn-outline-danger mr-2"(click)="deleteProduct(p._id)">D</button>
+                <button class="btn btn-sm btn-outline-dark" (click)="edit(p)">E</button>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>

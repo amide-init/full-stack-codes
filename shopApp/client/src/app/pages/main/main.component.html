@@ -1,0 +1,31 @@
+<div class="conatainer mt-3 p-5">
+    <div class="row">
+        <div class="col-8">
+            <h1>Tasks</h1>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-outline-success btn-block btn-lg" routerLink="/create">Create Task</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center mb-3" *ngFor="let task of tasks; index as i ">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                   ID : {{task._id | uppercase}} |  Date : {{task.date | date}}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{task.title}}</h5>
+                    <p class="card-text">{{task.description}}</p>
+                </div>
+                <div class="card-footer text-right">
+                    <button class="btn btn-outline-danger mr-2" (click)="deleteTask(task._id)">Delete</button>
+                    <a class="btn btn-outline-primary" routerLink="/edit/{{task._id}}">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="p-5 text-center" *ngIf="!tasks">
+        No data Found
+    </p>
+</div>

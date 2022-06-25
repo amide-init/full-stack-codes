@@ -1,0 +1,15 @@
+.product-card{
+    height: 400px;
+}
+.product-card:hover  .product-img {
+   opacity: 0.5;
+   background-color: aquamarine;
+}
+.product-body {
+    height: 140px;
+    overflow: hidden;
+}
+.product-img {
+    height: 200px;
+    object-fit: cover;
+}
