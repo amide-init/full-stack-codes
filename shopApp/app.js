@@ -7,7 +7,7 @@ const port = 8080;
 const taskRoutes =  require('./routes/task-routes');
 const userRoutes =  require('./routes/user-routes');
 const productRoutes = require('./routes/product-routes');
-
+const addressRoutes = require('./routes/address-route');
 // create application/json parser
 const jsonParser = bodyParser.json()
 
@@ -25,6 +25,7 @@ app.use(jsonParser);
 app.use('/task', taskRoutes);
 app.use('/user', userRoutes)
 app.use('/product', productRoutes)
+app.use('/address', addressRoutes);
 
 app.listen(port, () => {
     console.log("server is connected :", port);

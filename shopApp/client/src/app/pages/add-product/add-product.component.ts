@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
-import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-add-product',
@@ -31,6 +30,9 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token') == null) {
+      window.location.replace('/login')
+    }
     this.getProducts();
   }
   productAction() {

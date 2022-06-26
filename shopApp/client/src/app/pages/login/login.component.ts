@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
               setTimeout(() => {
                 this.message = ''
                 this.messageClass = 'd-none';
+                window.location.replace('/');
               }, 3000)
             } else {
               this.message = res.message

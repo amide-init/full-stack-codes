@@ -23,6 +23,9 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token') == null) {
+      window.location.replace('/login')
+    }
 
   }
   addTask() {

@@ -38,6 +38,7 @@ export class SignupComponent implements OnInit {
               setTimeout(() => {
                 this.message = ''
                 this.messageClass = 'd-none';
+                window.location.replace('/login');
               }, 3000)
             } else {
               this.message = res.message

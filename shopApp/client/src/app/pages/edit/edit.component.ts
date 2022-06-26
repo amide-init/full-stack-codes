@@ -25,6 +25,9 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token') == null) {
+      window.location.replace('/login')
+    }
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.getTaskById(id);
 

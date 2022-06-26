@@ -11,6 +11,9 @@ export class MainComponent implements OnInit {
   constructor(private ts:TaskService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('token') == null) {
+      window.location.replace('/login')
+    }
     this.getAllTask();
   }
 

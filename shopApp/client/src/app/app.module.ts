@@ -13,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { AddProductComponent } from './pages/add-product/add-product.component'
+import { AddProductComponent } from './pages/add-product/add-product.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AddProductComponent } from './pages/add-product/add-product.component'
     LoginComponent,
     SignupComponent,
     ProductsComponent,
-    AddProductComponent
+    AddProductComponent,
   ],
   imports: [
     BrowserModule,

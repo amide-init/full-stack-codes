@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-4" *ngFor="let product of products">
             <div class="card shadow product-card m-2">
-                <img [src]="product.thumbnail"  class="card-img-top product-img" alt="...">
+                <img [src]="product.thumbnail" class="card-img-top product-img" alt="...">
                 <div class="card-header  rounded-top text-white">
                     <div class="badge badge-success p-2">
                         Rs. {{product.price}}/-
@@ -15,9 +15,46 @@
                     <p class="card-text">{{product.description}}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-warning btn-block">Buy Now</button>
+                    <button class="btn btn-warning btn-block" (click)="buyNow(product)">Buy Now</button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p [ngClass]="messageClass">{{message}}</p>
+                <p *ngIf="currentProduct">Your are buying : {{currentProduct.title}}</p>
+                <p *ngIf="currentProduct">Total Amount : Rs.{{currentProduct.price}}</p>
+                <form [formGroup]="orderForm">
+                    <div class="form-group">
+                        <label>FULL Name</label>
+                        <input class="form-control"  formControlName="name" placeholder="Mahima K">
+                    </div>
+                    <div class="form-group">
+                        <label>Address </label>
+                        <textarea class="form-control"  formControlName="address" placeholder="enter your address"></textarea>
+                    </div>
+                    <p class="text-center p-3">
+                        <button class="btn btn-outline-info" (click)="createOrder()">Order Now</button>
+                    </p>
+                    
+                    
+                </form>
+            </div>
+           
         </div>
     </div>
 </div>
