@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 declare var $: any;
+declare var Razorpay:any;
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -79,6 +80,30 @@ export class ProductsComponent implements OnInit {
           }, 3000)
         }
       })
+  }
+  makePayment(product:any){
+    var options = {
+      "key": "rzp_test_S8jFMw693WUzaU", // Enter the Key ID generated from the Dashboard
+      "amount": product.price*100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": product.title,
+      "description": product.description,
+      "image": product.thumbnail,
+      "handler": function (response){
+        if(response.razorpay_payment_id) {
+          alert("Payment added successfully")
+        }else{
+          alert("Payment not completed")
+        }
+      },
+      
+      "theme": {
+          "color": "#ffc107"
+      }
+  };
+    var rzp =  Razorpay(options);
+    rzp.open();
+
   }
 
 }
